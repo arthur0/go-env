@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nodename
+  labels:
+    app: nodename
+spec:
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: nodename
+    spec:
+      containers:
+      - name: nodename
+        image: artmr/go-env:latest
+        env: 
+        - name: ENV_NAME
+          value: "Node"
+        - name: ENV_VALUE
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        ports:
+        - containerPort: 80

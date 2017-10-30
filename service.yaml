@@ -1,0 +1,15 @@
+kind: Service
+metadata:
+  name: nodename
+  labels:
+    app: nodename
+spec:
+  ports:
+  - name: web 
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  selector:
+    app: nodename
+  type: LoadBalancer
+  externalTrafficPolicy: Local
